@@ -1,0 +1,9 @@
+
+DESIGNING STYLE
+================
+
+1) We will be using synchronous active low reset.
+2) The variables are named based on what they are.
+3) Port instantiation
+   + follow the variable rules to name the port
+   + The order should be input, output, rst, clk
