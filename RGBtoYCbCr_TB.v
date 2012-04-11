@@ -50,7 +50,7 @@ module RGBtoYCbCr_TB;
       load_RGB(1,123,12);
       load_RGB(21,1,12);
       load_RGB(11,13,122);
-      #20 $stop;
+      #20 $finish;
    end // initial begin
 
    task load_RGB;
