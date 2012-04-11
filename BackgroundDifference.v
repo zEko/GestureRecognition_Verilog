@@ -12,7 +12,7 @@ module BackgroundDifference(luma_bg, luma_sign,
      if(rst)
        object_image = 0;
      else
-       object_image = luma_bg xor luma_sign;
+       object_image = luma_bg ^ luma_sign;
    end
 endmodule // BackgroundDifference
 
