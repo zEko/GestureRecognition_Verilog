@@ -6,10 +6,15 @@ module BackgroundDifference(luma_bg, luma_sign,
 
    input       rst, clk;
    		    
-   reg 	       object_image_temp;
+   reg 	       object_image;
 
-   always @(posedge clk)
+   always @(posedge clk) begin
      if(rst)
        object_image = 0;
      else
-       object_image = luma_bg xor  
+       object_image = luma_bg xor luma_sign;
+   end
+endmodule // BackgroundDifference
+
+   
+   
