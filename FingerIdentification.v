@@ -21,13 +21,13 @@ module FingerIdentification(palm_width,
 
    reg      thumb_status, index_status, middle_status, ring_status, pinky_status;
 
-   always @posedge(clk) begin
-     if(rst) begin
-	thumb_status = 0;
-	index_status = 0;
-	middle_status = 0;
-	ring_status = 0;
-	pinky_status = 0;
+   always @(posedge clk) begin
+      if(rst) begin
+	 thumb_status = 0;
+	 index_status = 0;
+	 middle_status = 0;
+	 ring_status = 0;
+	 pinky_status = 0;
      end
 
      else begin

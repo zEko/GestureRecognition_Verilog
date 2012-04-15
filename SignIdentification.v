@@ -1,10 +1,10 @@
 module SignIdentification(thumb_status,
-			    index_status,
-			    middle_status,
-			    ring_status,
-			    pinky_status,
-			    sign_value,
-			    rst,clk);
+			  index_status,
+			  middle_status,
+			  ring_status,
+			  pinky_status,
+			  sign_value,
+			  rst,clk);
    
    input      thumb_status, index_status, middle_status, ring_status, pinky_status;
 
@@ -12,7 +12,10 @@ module SignIdentification(thumb_status,
 
    input 	rst, clk;
 
-   always @posedge(clk) begin
+   reg 		sign_value;
+   
+
+   always @(posedge clk) begin
       if(rst) begin
 	 sign_value = 4'b0000;
       end
