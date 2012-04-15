@@ -4,7 +4,7 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 		   rst, clk);
 
    input [7:0] luma_ch, cb_ch, cr_ch;
-   input       BACKGROUND_DIFFERENCE;
+   input       BACKGROUND_DIFFERENCECE;
    
    output      object_image;
 
