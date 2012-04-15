@@ -2,11 +2,13 @@ module SignToText(red_ch,
 		  green_ch,
 		  blue_ch,
 		  palm_height_test,
+		  BACKGROUND_DIFFERENCE,
 		  clk,rst);
 
    input [7:0] red_ch, green_ch, blue_ch;
    input [7:0] palm_height_test;
-   
+   input       BACKGROUND_DIFFERENCE;
+      
    input clk, rst;
 
    // Am i doing it right
@@ -34,19 +36,22 @@ module SignToText(red_ch,
 		      .rst(rst),
 		      .clk(clk));
    
-   wire       object_image_a;
+   wire       object_image;
    SkinDecider dut_1 (.luma_ch(luma_ch),
 		      .cb_ch(cb_ch),
 		      .cr_ch(cr_ch),
-		      .object_image(object_image_a),
+		      .object_image(object_image),
+		      .BACKGROUND_DIFFERENCE(BACKGROUND_DIFFERENCE),
 		      .rst(rst), .clk(clk));
 
-   wire       object_image_b;   		     
+/*   wire       object_image_b;   		     
    BackgroundDifference dut_2 (.luma_bg(luma_bg),
 			       .luma_sign(luma_ch),
 			       .object_image(object_image_b),
+			       .BACKGROUND_DIFFERENCE(BACKGROUND_DIFFERENCE),
 			       .rst(rst),
 			       .clk(clk));
+ */
    
    wire [7:0] start_of_palm_c, start_of_palm_r;
    wire [7:0] end_of_palm_c, end_of_palm_r;
