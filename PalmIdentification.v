@@ -6,7 +6,8 @@ module PalmIdentification(object_image,
 			  end_of_palm_r,
 			  end_of_palm_c,
 			  palm_width,
-			  palm_height);
+			  palm_height,
+			  rst,clk);
    
    // The 'object_image' is received after segmentation
    // if TESTING_SWITCH is set, the palm height is manually entered
