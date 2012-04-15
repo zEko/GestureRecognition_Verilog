@@ -18,12 +18,12 @@ module SignToText(red_ch,
    wire [7:0] luma_bg, luma_sign;
    wire       object_image;
    
-   RGBtoYCbCr dut_1 (.red_ch(red_ch)
-		     .green_ch(green_ch);
-		     .blue_ch(blue_ch);
-		     .luma_ch(luma_ch);
-		     .cb_ch(cb_ch);
-		     .cr_ch(cb_ch)
+   RGBtoYCbCr dut_1 (.red_ch(red_ch),
+		     .green_ch(green_ch),
+		     .blue_ch(blue_ch),
+		     .luma_ch(luma_ch),
+		     .cb_ch(cb_ch),
+		     .cr_ch(cb_ch),
 		     .rst(rst),
 		     .clk(clk));
 
