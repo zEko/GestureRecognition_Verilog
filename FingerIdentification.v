@@ -1,31 +1,51 @@
-module FingerIdentification(thumb_status,
+module FingerIdentification(palm_width,
+e			    palm_height,
+			    start_of_palm_r,
+			    start_of_palm_c,
+			    end_of_palm_r,
+			    end_of_palm_c,
+			    thumb_status,
 			    index_status,
 			    middle_status,
 			    ring_status,
 			    pinky_status,
-			    sign_value,
 			    rst,clk);
    
-   input      thumb_status, index_status, middle_status, ring_status, pinky_status;
+   input [7:0] palm_width, palm_height;
+   input [7:0] start_of_palm_r, start_of_palm_c;
+   input [7:0] end_of_palm_r, end_of_palm_c;
 
-   output [3:0] sign_value;
+   output      thumb_status, index_status, middle_status, ring_status, pinky_status;
 
-   input 	rst, clk;
+   input       rst, clk;
+
+   reg      thumb_status, index_status, middle_status, ring_status, pinky_status;
 
    always @posedge(clk) begin
-      if(rst) begin
-	 sign_value = 4'b0000;
-      end
+     if(rst) begin
+	thumb_status = 0;
+	index_status = 0;
+	middle_status = 0;
+	ring_status = 0;
+	pinky_status = 0;
+     end
 
-      else begin
-	 // if we can individually set bit based on position
-	 // we could possibly use case
-	 // But how
-      end
+     else begin
+	if (palm_width != 0) begin
+	   // Calculate the status of each finger
+	end
+     end // else: !if(rst)
    end // always @ posedge(clk)
 endmodule // FingerIdentification
 
+	
+	  
+       
+	
    
-	 
-   
-   
+
+  
+		    
+
+		    
+		    
