@@ -4,15 +4,16 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 		   rst, clk);
 
    input [7:0] luma_ch, cb_ch, cr_ch;
+   input       BACKGROUND_DIFFERENCE;
+   
    output      object_image;
 
    input 	rst, clk;
 
    reg  	object_image;
-   reg [7:0] 	luma_bg;
    reg 		BACKGROUND_SCAN_COMPLETE;
    reg [15:0] 	counter;
-   reg [7:0] 	luma_bg[19200];
+   reg [7:0] 	luma_bg[0:19199];
    
    always @(posedge clk) begin
       if (rst)
@@ -23,7 +24,7 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 	 if(BACKGROUND_DIFFERENCE) begin
 	    // check if the scan is complete
 	    if(BACKGROUND_SCAN_COMPLETE) begin
-	       if ((luma_bg[counter] - luma_sign) > 120)
+	       if ((luma_bg[counter] - luma_ch) > 120)
 		 object_image = 1'b1;
 	       else
 		 object_image = 1'b0;
