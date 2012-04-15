@@ -1,5 +1,5 @@
 module FingerIdentification(palm_width,
-e			    palm_height,
+			    palm_height,
 			    start_of_palm_r,
 			    start_of_palm_c,
 			    end_of_palm_r,
