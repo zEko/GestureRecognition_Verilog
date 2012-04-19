@@ -17,7 +17,7 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
    
    always @(posedge clk) begin
       if (rst)
-	object_image = 0;
+	object_image <= 0;
       else begin
 
 	 // if we are using the background difference method
@@ -25,32 +25,32 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 	    // check if the scan is complete
 	    if(BACKGROUND_SCAN_COMPLETE) begin
 	       if ((luma_bg[counter] - luma_ch) > 120)
-		 object_image = 1'b1;
+		 object_image <= 1'b1;
 	       else
-		 object_image = 1'b0;
-	       counter = counter + 1;
+		 object_image <= 1'b0;
+	       counter <= counter + 1;
 	    end
 
 	    // Store the background luma pixels, the first image captured
 	    else begin
-	       luma_bg[counter] = luma_ch;
+	       luma_bg[counter] <= luma_ch;
 	       // Do not overflow the counter
 	       if(counter == 19200) begin
-		  BACKGROUND_SCAN_COMPLETE = 1;
+		  BACKGROUND_SCAN_COMPLETE <= 1;
 		  // set counter to 0, for the comparision step
-		  counter = 0;
+		  counter <= 0;
 	       end
 	       else
-		 counter = counter + 1;
+		 counter <= counter + 1;
 	    end
 	 end // if (BACKGROUND_DIFFERENCE)
 	 else if ((luma_ch > 80) &&
 		  (cb_ch > 125) && (cb_ch < 180) && 
 		  (cr_ch > 190) && (cr_ch < 225)) begin
-	    object_image = 1;
+	    object_image <= 1;
 	 end
 	 else begin
-	    object_image = 0;
+	    object_image <= 0;
 	 end
       end
    end // always @ (posedge clk)

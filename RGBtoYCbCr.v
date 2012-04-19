@@ -47,9 +47,9 @@ module RGBtoYCbCr(red_ch, green_ch, blue_ch,
       cr_ch <= 0;
      end
      else begin
-      luma_ch = (NC_red*red_ch) + (NC_green*green_ch) + (NC_blue*blue_ch);
-      cb_ch = 0;
-      cr_ch = 0;
+      luma_ch <= (NC_red*red_ch) + (NC_green*green_ch) + (NC_blue*blue_ch);
+      cb_ch <= 0;
+      cr_ch <= 0;
      end
    end // block: RGB_to_YCbCr
 endmodule // RGBtoYCbCr
