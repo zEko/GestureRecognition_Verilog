@@ -27,12 +27,12 @@ module PalmIdentification(object_image,
    
    always @(posedge clk) begin
       if (rst) begin
-	 start_of_palm_r = 8'b0;
-	 start_of_palm_c = 8'b0;
-	 end_of_palm_r = 8'b0;
-	 end_of_palm_c = 8'b0;
-	 palm_width = 8'b0;
-	 palm_height = 8'b0;
+	 start_of_palm_r <= 8'b0;
+	 start_of_palm_c <= 8'b0;
+	 end_of_palm_r <= 8'b0;
+	 end_of_palm_c <= 8'b0;
+	 palm_width <= 8'b0;
+	 palm_height <= 8'b0;
       end
 
       else begin
@@ -43,26 +43,26 @@ module PalmIdentification(object_image,
 	 // palm not found
 	 else begin
 	    // reset the palm id flags
-	    FOUND_PALM_START  = 0;
-	    FOUND_PALM_END = 0;
+	    FOUND_PALM_START  <= 0;
+	    FOUND_PALM_END <= 0;
 
 	    // found hand pixel
 	    if(object_image) begin
 	       // check if the start of palm has been found
 	       if(FOUND_PALM_START == 0) begin
 		  // if not mark it as the start of palm
-		  FOUND_PALM_START = 1;
+		  FOUND_PALM_START <= 1;
 		  // record the row and column values
-		  start_of_palm_r = row_count;
-		  start_of_palm_c = col_count;
+		  start_of_palm_r <= row_count;
+		  start_of_palm_c <= col_count;
 	       end // if(FOUND_PALM_START)
 	       else begin
 		  // if the start has been found mark it as the end
 		  // record the row and column values
-		  end_of_palm_r = row_count;
-		  end_of_palm_c = col_count;
+		  end_of_palm_r <= row_count;
+		  end_of_palm_c <= col_count;
 		  // Mark that the end of palm has been found
-		  FOUND_PALM_END = 1;
+		  FOUND_PALM_END <= 1;
 	       end // !if(FOUND_PALM_START)
 	    end // if (object_image)
 	       
@@ -72,15 +72,15 @@ module PalmIdentification(object_image,
 		  palm_width = end_of_palm_c - start_of_palm_c;
 		  if (palm_width > 17) begin
 		     // Stop accepting the incoming pixels
-		     INNERBREAK = 1;
+		     INNERBREAK <= 1;
 		     // Calculate palm height
 		     if(!TESTING_SWITCH) begin
 			// Non testing mode
-			palm_height = palm_width * 1.5;
+			palm_height <= palm_width * 1.5;
 		     end //if(!TESTING_SWITCH)
 		     else begin
 			// Testing mode
-			palm_height = palm_height_test;
+			palm_height <= palm_height_test;
 		     end // !if(!TESTING_SWITCH)
 		  end // if (palm_width > 17)
 	       end // if (FOUND_PALM_END == 1)
@@ -90,12 +90,12 @@ module PalmIdentification(object_image,
 	 // Meanwhile keep track of the image row and columns
 	 if(col_count == IMAGE_WIDTH) begin
 	    // columns should not exceed image_width
-	    col_count = 0;
+	    col_count <= 0;
 	    // increment row after 1 scan of column
-	    row_count = row_count + 1;
+	    row_count <= row_count + 1;
 	 end
 	 else begin
-   	    col_count = col_count + 1;
+   	    col_count <= col_count + 1;
 	 end
       end // else: !if(rst)
    end // always @ (posedge clk)
