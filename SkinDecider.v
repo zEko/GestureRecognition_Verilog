@@ -27,7 +27,7 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 
    reg  	object_image;
    reg 		BACKGROUND_SCAN_COMPLETE;
-   reg [15:0] 	counter;
+   reg [15:0] 	counter=0;
    reg [7:0] 	luma_bg[0:19199];
    
    always @(posedge clk) begin
