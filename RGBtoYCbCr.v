@@ -2,29 +2,18 @@
    Software : iverilog
    License : LGPL
 */
-// R,G,B are 8 bit values with 0~255 range
-// Y is a 8 bit number, range 0~255
-//
-// Conversion Equation
-// Y = 0.299*R + 0.587*G + 0.114*B
-//
-// Normalization equations
-// Y = (1/256) * [256*0.299*R + 256*0.587*G + 256*0.114*B]
-// Y = (1/256) * [76.544*R + 150.272*G + 29.184*B]
-// Y = (1/256) * [77*R + 150*G + 29*B]
-//
    
 module RGBtoYCbCr(red_ch, green_ch, blue_ch,
-		       luma_ch, cb_ch, cr_ch,
-		       clk, rst);
-   // 8 bit pixel
-   parameter WIDTH=8;
+		  luma_ch, cb_ch, cr_ch,
+		  clk, rst);
+   // inputs: R,G,B are 8 bit values with 0~255 range
+   // outputs: Y, Cb, Cr is a 8 bit number, range 0~255
 
    input rst;
    input clk;
-   input [WIDTH-1:0] red_ch;
-   input [WIDTH-1:0] green_ch;
-   input [WIDTH-1:0] blue_ch;
+   input [7:0] red_ch;
+   input [7:0] green_ch;
+   input [7:0] blue_ch;
 
    output [WIDTH-1:0] luma_ch;
    output [WIDTH-1:0] cb_ch;
