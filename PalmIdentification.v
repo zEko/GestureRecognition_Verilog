@@ -8,6 +8,25 @@ module PalmIdentification(object_image,
 			  palm_width,
 			  palm_height,
 			  rst,clk);
+   /*
+    Finds the centre of the bottom of palm.
+    
+    INPUT:
+    object_image - 1 bit, hand sign image.
+    palm_height_test : 8 bit, value of pal height obtained from testing mode
+    
+    OUTPUT:
+    start_of_palm_r : 8 bit, row index of start of palm
+    start_of_palm_c : 8 bit, column index of start of palm
+    end_of_palm_r : 8 bit, row index of end of palm
+    end_of_palm_c : 8 bit, column index of end of palm
+    palm_width : 8 bit, calculated palm_width
+    palm_height : 8 bit, calculated palm_height
+    
+    FLAG:
+    TESTING_SWITCH : To use the palm_height_test value.
+    */
+    
    
    // The 'object_image' is received after segmentation
    // if TESTING_SWITCH is set, the palm height is manually entered
@@ -69,7 +88,7 @@ module PalmIdentification(object_image,
             // If its not a hand pixel
 	    else begin
 	       if(FOUND_PALM_END == 1) begin
-		  palm_width = end_of_palm_c - start_of_palm_c;
+		  palm_width <= end_of_palm_c - start_of_palm_c;
 		  if (palm_width > 17) begin
 		     // Stop accepting the incoming pixels
 		     INNERBREAK <= 1;

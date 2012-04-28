@@ -2,6 +2,21 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 		   object_image,
 		   BACKGROUND_DIFFERENCE,
 		   rst, clk);
+   /*
+    If background_difference method is not used, extract the 
+    skin pixels from the incoming input image. Otherwise sutract 
+    image from the background reference.
+    
+    INPUT:
+    luma_ch - 8 bit, background(one time) and image.
+    
+    OUTPUT:
+    object_image - 1 bit hand sign image
+    
+    FLAG:
+    BACKGROUND_DIFFERENCE - Method of hand segmentation
+   */
+    
 
    input [7:0] luma_ch, cb_ch, cr_ch;
    input       BACKGROUND_DIFFERENCE;
