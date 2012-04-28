@@ -15,13 +15,13 @@ module RGBtoYCbCr(red_ch, green_ch, blue_ch,
    input [7:0] green_ch;
    input [7:0] blue_ch;
 
-   output [WIDTH-1:0] luma_ch;
-   output [WIDTH-1:0] cb_ch;
-   output [WIDTH-1:0] cr_ch;
+   output [7:0] luma_ch;
+   output [7:0] cb_ch;
+   output [7:0] cr_ch;
       
-   reg [WIDTH-1:0] luma_ch;
-   reg [WIDTH-1:0] cb_ch;
-   reg [WIDTH-1:0] cr_ch;
+   reg [7:0] luma_ch;
+   reg [7:0] cb_ch;
+   reg [7:0] cr_ch;
    
    // Normalization coeffecients
    parameter NC_red = 77;
