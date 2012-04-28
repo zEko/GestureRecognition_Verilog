@@ -38,6 +38,7 @@ module PalmIdentification(object_image,
    reg [7:0] 	start_of_palm_r, start_of_palm_c, end_of_palm_r, end_of_palm_c, palm_height, palm_width;
    // A flag to check if the entire first line is received
    reg 		FOUND_PALM_START=0, FOUND_PALM_END=0;
+   // The dimensions of the image
    reg 		IMAGE_WIDTH=160, IMAGE_HEIGHT=120;
    reg 		row_count = 0, col_count = 0;
    // flag to indicate 'break out of id mode'
@@ -114,6 +115,7 @@ module PalmIdentification(object_image,
 	    row_count <= row_count + 1;
 	 end
 	 else begin
+	    // still in the same column
    	    col_count <= col_count + 1;
 	 end
       end // else: !if(rst)
