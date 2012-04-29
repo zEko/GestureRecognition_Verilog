@@ -39,7 +39,7 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
 	 if(BACKGROUND_DIFFERENCE) begin
 	    // check if the scan is complete
 	    if(BACKGROUND_SCAN_COMPLETE) begin
-	       if ((luma_bg[counter] - luma_ch) > 120)
+	       if ((luma_bg[counter] - luma_ch < 20) || (luma_ch - luma_bg[counter] < 20))
 		 object_image <= 1'b1;
 	       else
 		 object_image <= 1'b0;
