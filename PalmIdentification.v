@@ -57,6 +57,18 @@ module PalmIdentification(object_image,
       end
 
       else begin
+	 // Keep track of the image row and columns
+	 if(col_count > IMAGE_WIDTH) begin
+	    // columns should not exceed image_width
+	    col_count <= 0;
+	    // increment row after 1 scan of column
+	    row_count <= row_count + 1;
+	 end
+	 else begin
+	    // still in the same column
+   	    col_count <= col_count + 1;
+	 end
+	 
 	 // If palm has been found ignore the incoming pixels
 	 if(INNERBREAK == 1) begin
 	 end
@@ -107,18 +119,6 @@ module PalmIdentification(object_image,
 	       end // if (FOUND_PALM_END == 1)
 	    end // else: !if(object_image)
 	 end // else: !if(INNERBREAK == 1)
-	 
-	 // Meanwhile keep track of the image row and columns
-	 if(col_count == IMAGE_WIDTH) begin
-	    // columns should not exceed image_width
-	    col_count <= 0;
-	    // increment row after 1 scan of column
-	    row_count <= row_count + 1;
-	 end
-	 else begin
-	    // still in the same column
-   	    col_count <= col_count + 1;
-	 end
       end // else: !if(rst)
    end // always @ (posedge clk)
 endmodule // PalmIdentification
