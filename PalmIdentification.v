@@ -1,12 +1,12 @@
 module PalmIdentification(object_image,
 			  palm_height_test,
-			  TESTING_SWITCH,
 			  start_of_palm_r,
 			  start_of_palm_c,
 			  end_of_palm_r,
 			  end_of_palm_c,
 			  palm_width,
 			  palm_height,
+			  TESTING_SWITCH,			  
 			  rst,clk);
    /*
     Finds the centre of the bottom of palm.
@@ -30,17 +30,18 @@ module PalmIdentification(object_image,
    
    // The 'object_image' is received after segmentation
    // if TESTING_SWITCH is set, the palm height is manually entered
-   input object_image, TESTING_SWITCH;
+   input object_image;
    input [7:0] palm_height_test;
    output [7:0] start_of_palm_r, start_of_palm_c, end_of_palm_r, end_of_palm_c, palm_height, palm_width;
+   input 	TESTING_SWITCH;
    input 	rst, clk;
    
    reg [7:0] 	start_of_palm_r, start_of_palm_c, end_of_palm_r, end_of_palm_c, palm_height, palm_width;
    // A flag to check if the entire first line is received
    reg 		FOUND_PALM_START=0, FOUND_PALM_END=0;
    // The dimensions of the image
-   reg 		IMAGE_WIDTH=160, IMAGE_HEIGHT=120;
-   reg 		row_count = 0, col_count = 0;
+   reg [7:0] 	IMAGE_WIDTH=160, IMAGE_HEIGHT=120;
+   reg [7:0] 	row_count = 0, col_count = 0;
    // flag to indicate 'break out of id mode'
    reg 		INNERBREAK = 0;
    
