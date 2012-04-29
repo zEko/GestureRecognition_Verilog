@@ -75,10 +75,6 @@ module PalmIdentification(object_image,
 	 
 	 // palm not found
 	 else begin
-	    // reset the palm id flags
-	    FOUND_PALM_START  <= 0;
-	    FOUND_PALM_END <= 0;
-
 	    // found hand pixel
 	    if(object_image) begin
 	       // check if the start of palm has been found
@@ -116,6 +112,11 @@ module PalmIdentification(object_image,
 			palm_height <= palm_height_test;
 		     end // !if(!TESTING_SWITCH)
 		  end // if (palm_width > 17)
+		  else begin
+		     // reset the palm id flags
+		     FOUND_PALM_START  <= 0;
+		     FOUND_PALM_END <= 0;
+		  end // else: !if(palm_width > 17)
 	       end // if (FOUND_PALM_END == 1)
 	    end // else: !if(object_image)
 	 end // else: !if(INNERBREAK == 1)
