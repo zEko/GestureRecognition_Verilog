@@ -17,7 +17,6 @@ module SkinDecider(luma_ch, cb_ch, cr_ch,
     BACKGROUND_DIFFERENCE - Method of hand segmentation
    */
     
-
    input [7:0] luma_ch, cb_ch, cr_ch;
    input       BACKGROUND_DIFFERENCE;
    
