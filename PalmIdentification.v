@@ -58,7 +58,7 @@ module PalmIdentification(object_image,
 
       else begin
 	 // Keep track of the image row and columns
-	 if(col_count > IMAGE_WIDTH) begin
+	 if(col_count >= IMAGE_WIDTH-1) begin
 	    // columns should not exceed image_width
 	    col_count <= 0;
 	    // increment row after 1 scan of column
