@@ -91,8 +91,8 @@ module FingerIdentification(object_image,
 	    // Create the Finger Boxes, The dimensions are similar to that of design in matlab.
             // Calculate the status of each finger.If the no.of white pixels in the finger's box
 	    // exceeds the threshold, set its status
-            pinky_left <= end_of_palm_c - (palm_width << 2 ) + end_of_palm_c - start_of_palm_c;
-            pinky_right <= end_of_palm_c - (palm_width << 2 );
+            pinky_left <= end_of_palm_c - (palm_width >> 2 ) + palm_width;
+            pinky_right <= end_of_palm_c - (palm_width >> 2 );
             pinky_bottom <= end_of_palm_r + palm_height;
             pinky_top <= end_of_palm_r + palm_height + palm_height;	    
             if(row_count > pinky_bottom && row_count < pinky_top && col_count > pinky_right && col_count < pinky_left) begin
@@ -104,8 +104,8 @@ module FingerIdentification(object_image,
                end
             end
 
-            ring_left <= end_of_palm_c - (palm_width << 2 ) - 3;
-            ring_right <= start_of_palm_c + (palm_width << 1) - 5;
+            ring_left <= end_of_palm_c - (palm_width >> 2 ) - 3;
+            ring_right <= start_of_palm_c + (palm_width >> 1) - 5;
             ring_bottom <= end_of_palm_r + palm_height;
             ring_top <= end_of_palm_r + palm_height + palm_height;	    
             if(row_count > ring_bottom && row_count < ring_top && col_count > ring_right && col_count < ring_left) begin            
@@ -117,8 +117,8 @@ module FingerIdentification(object_image,
                end
             end
 
-            middle_left <= start_of_palm_c + (palm_width << 1) - 5 - 7;
-            middle_right <=  start_of_palm_c + (palm_width << 1) - 5 - 7 - (palm_width << 1);
+            middle_left <= start_of_palm_c + (palm_width >> 1) - 5 - 7;
+            middle_right <=  start_of_palm_c + (palm_width >> 1) - 5 - 7 - (palm_width >> 1);
             middle_bottom <= end_of_palm_r + palm_height;
             middle_top <= end_of_palm_r + palm_height + palm_height;	    
             if(row_count > middle_bottom && row_count < middle_top && col_count > middle_right && col_count < middle_left) begin                    
@@ -130,8 +130,8 @@ module FingerIdentification(object_image,
                end
             end
             
-            index_left <= start_of_palm_c + (palm_width << 1) - 5 - 7 - (palm_width << 1);
-            index_right <= start_of_palm_c + (palm_width << 1) - 5 - 7 - (palm_width << 1) + palm_width;
+            index_left <= start_of_palm_c + (palm_width >> 1) - 5 - 7 - (palm_width >> 1);
+            index_right <= start_of_palm_c + (palm_width >> 1) - 5 - 7 - (palm_width >> 1) - palm_width;
             index_bottom <= end_of_palm_r + palm_height;	    
             index_top <= end_of_palm_r + palm_height + palm_height;
             if(row_count > index_bottom && row_count < index_top && col_count > index_right && col_count < index_left) begin
