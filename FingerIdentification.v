@@ -24,7 +24,11 @@ module FingerIdentification(object_image,
    // Finger status indicators,
    // if open, status is `True`
    // else status is `False`
-   reg         thumb_status, index_status, middle_status, ring_status, pinky_status;
+   reg         thumb_status=0;
+   reg 	       index_status=0;
+   reg 	       middle_status=0;
+   reg 	       ring_status=0;
+   reg 	       pinky_status=0;
    
    // The dimensions of the image
    reg [7:0] 	IMAGE_WIDTH=120, IMAGE_HEIGHT=160;
