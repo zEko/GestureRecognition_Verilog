@@ -40,7 +40,7 @@ module PalmIdentification(object_image,
    // A flag to check if the entire first line is received
    reg 		FOUND_PALM_START=0, FOUND_PALM_END=0;
    // The dimensions of the image
-   reg [7:0] 	IMAGE_WIDTH=160, IMAGE_HEIGHT=120;
+   reg [7:0] 	IMAGE_WIDTH=120, IMAGE_HEIGHT=160;
    reg [7:0] 	row_count = 0, col_count = 0;
    // flag to indicate 'break out of id mode'
    reg 		INNERBREAK = 0;
